@@ -1,0 +1,19 @@
+///100 days of RTL///
+
+///Abilash P///
+
+///2:1 mux gate level modelling///
+
+module mux_2_to_1 (I0, I1, S0,Y);
+
+input  I0,I1,S0;
+output Y;
+wire w1,w2;
+
+and a1 (w1,S0,I1);
+and a2 (w2,~S0,I0);
+
+or a3 (Y,w1,w2);
+
+endmodule
+
