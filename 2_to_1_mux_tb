@@ -1,0 +1,51 @@
+///100 days of RTL///
+
+///Abilash P///
+
+///2:1 mux data flow modelling///
+
+module mux_2_to_1_tb ();
+
+reg  I0, I1, S0;
+wire Y;
+
+mux_2_to_1 DUT(.I0(I0), .I1(I1), .S0(S0), .Y(Y));
+
+integer i;
+
+task initial_values();
+begin
+  I0 = 1'b0;
+  I1 = 1'b1;
+  $display("The initial values of I0= %b and I1 = %b",I0,I1);
+end
+endtask
+
+task select();
+begin
+   for(i=0; i<2; i=i+1)
+   begin
+     S0 = i;
+     #20;
+     $display("When the select line  is S0 = %b", S0);
+     $display("The output Y = %b",Y);
+    end
+end
+endtask
+
+task change_values();
+begin
+   I0 = 1'b1;
+   I1 = 1'b0;
+   $display("The changed values of I0= %b and I1 = %b",I0,I1);
+end
+endtask
+
+initial
+begin
+   initial_values();
+   select();
+   change_values();
+   select();
+end
+endmodule
