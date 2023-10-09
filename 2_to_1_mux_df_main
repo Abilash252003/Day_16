@@ -1,0 +1,15 @@
+///100 days of RTL///
+
+///Abilash P///
+
+///2:1 mux data flow modelling///
+
+module mux_2_to_1 (I0, I1, S0,Y);
+
+input  I0,I1,S0;
+output Y;
+
+assign Y = S0 ? I1 : I0;
+
+endmodule
+
